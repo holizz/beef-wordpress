@@ -1,0 +1,10 @@
+beef:
+  module:
+    create_user:
+      enable: true
+      category: "WordPress"
+      name: "Create User"
+      description: "Adds an admin user to WordPress"
+      authors: ["Tom Adams <tom@holizz.com>"]
+      target:
+        working: ['All']
