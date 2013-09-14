@@ -20,8 +20,12 @@ class Create_user < BeEF::Core::Command
     ]
   end
 
-  def post_execute
-    save({'answer' => @datastore['answer']})
+  def pre_send
+    BeEF::Core::NetworkStack::Handlers::AssetHandler.instance.bind('/modules/wordpress/create_user/assets/js/async.js','/wordpress/create_user/async.js','js')
   end
 
+  def post_execute
+    BeEF::Core::NetworkStack::Handlers::AssetHandler.instance.unbind('/wordpress/create_user/async.js') 
+    save({'answer' => @datastore['answer']})
+  end
 end
